@@ -1,0 +1,26 @@
+{
+  "provider": "Netlify",
+  "url": "https://pitchharbor.netlify.app/",
+  "support_url": "https://pitchharbor.netlify.app/support",
+  "privacy_url": "https://pitchharbor.netlify.app/privacy",
+  "status": "Published by Owner; Public URLs Verified",
+  "source_directory": "Website-Netlify",
+  "anonymous_pages_verified": true,
+  "verified_date": "2026-10-23",
+  "http_status": {
+    "home": 200,
+    "support": 200,
+    "privacy": 200
+  },
+  "previous_sites_deployment": {
+    "project_id": "appgprj_6adb7e8e73d08191aceb3c861bfccbbb",
+    "version_id": "appgprj_6adb7e8e73d08191aceb3c861bfccbbb~appgver_081414de57f08191a0332105522d3c63",
+    "deployment_id": "appgdep_6adb7f34cf288191aead7eb85eb5f0a6",
+    "url": "https://pitchharbor-support.codysquadroni.chatgpt.site",
+    "status": "succeeded",
+    "access_mode": "public",
+    "source_commit": "56fdbdebb3429e49c58f4206648faa5286fbfccf",
+    "source_directory": "Release/site",
+    "anonymous_pages_verified": true
+  }
+}

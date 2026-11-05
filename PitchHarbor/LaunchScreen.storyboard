@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23501" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="launch-controller">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="launch-scene">
+            <objects>
+                <viewController id="launch-controller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="launch-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="launch-brand">
+                                <rect key="frame" x="36.5" y="341" width="320" height="195"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BrandIcon" translatesAutoresizingMaskIntoConstraints="NO" id="launch-icon">
+                                        <rect key="frame" x="112" y="0.0" width="96" height="96"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="96" id="icon-width"/>
+                                            <constraint firstAttribute="height" constant="96" id="icon-height"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="PitchHarbor" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.8" translatesAutoresizingMaskIntoConstraints="NO" id="launch-name">
+                                        <rect key="frame" x="68" y="112" width="184" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" weight="bold" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Your Team. Every Moment." textAlignment="center" numberOfLines="0" translatesAutoresizingMaskIntoConstraints="NO" id="launch-tagline">
+                                        <rect key="frame" x="65" y="166" width="190" height="19"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.62" green="0.86" blue="0.77" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="750" constant="320" id="brand-width"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="launch-name" secondAttribute="width" id="name-fits"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="launch-tagline" secondAttribute="width" id="tagline-fits"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="launch-safe-area"/>
+                        <color key="backgroundColor" red="0.043" green="0.231" blue="0.18" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="launch-brand" firstAttribute="centerX" secondItem="launch-safe-area" secondAttribute="centerX" id="brand-center-x"/>
+                            <constraint firstItem="launch-brand" firstAttribute="centerY" secondItem="launch-safe-area" secondAttribute="centerY" id="brand-center-y"/>
+                            <constraint firstItem="launch-brand" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="launch-safe-area" secondAttribute="leading" constant="32" id="brand-leading"/>
+                            <constraint firstItem="launch-safe-area" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="launch-brand" secondAttribute="trailing" constant="32" id="brand-trailing"/>
+                            <constraint firstItem="launch-brand" firstAttribute="top" relation="greaterThanOrEqual" secondItem="launch-safe-area" secondAttribute="top" constant="24" id="brand-top"/>
+                            <constraint firstItem="launch-safe-area" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="launch-brand" secondAttribute="bottom" constant="24" id="brand-bottom"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="launch-responder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BrandIcon" width="1024" height="1024"/>
+    </resources>
+</document>

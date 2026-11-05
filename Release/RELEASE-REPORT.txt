@@ -1,0 +1,218 @@
+PITCHHARBOR — RELEASE AUDIT
+October 22, 2026
+
+STATUS
+Public support/privacy pages and independent-developer contact details are configured. All 19 scoped local preflight checks pass. Not yet submitted or certified for App Store approval. Submission still requires the missing review phone/account choices, final screenshots, signed distribution validation, and real-device/TestFlight acceptance.
+
+FIXED IN THIS AUDIT
+• Backup imports now read at most 50 MB before decoding; external file reading runs away from the main UI actor. Direct restore calls enforce the same byte limit.
+• Failed restores and erasures preserve the prior archive and report failure instead of claiming success. Failed team and match creation saves retain the previous persisted state; team/player editors stay open with feedback.
+• Validation checks team/match/board references, IDs, roster roles/numbers, event times, record sizes, drawing data, normalized coordinates, scores, and finite elapsed values. Corrupt archives remain protected from automatic overwrite.
+• Local files retain atomic writes with iOS Data Protection. Temporary board exports use unique, protected files and are removed when the sharing sheet closes. User exports are deliberately not password protected; policy and settings explain that they contain coaching data.
+• Data & Settings includes an offline privacy policy, coaching guide, app version, and explicit confirmation to erase all local data. Restore/erase are blocked during active matches. Reset also resets the displayed setup state.
+• Added Discard Unstarted Match, avoiding the need to pretend to play two halves just to correct an unused match setup.
+• New players default to an unused jersey number. Reporting says “Without Names” rather than promising anonymity; jersey numbers may identify players to teammates.
+• Setup progress has one readable step announcement rather than exposing a decorative thin bar as a separate accessibility target. Setup uses native Done keyboard actions. Deletion uses a visible Cancel action on both screen layouts.
+• Build targets iPhone/Duo, iOS 18+, with exempt-encryption metadata, native launch screen, icon, and privacy manifest. Debug fixtures and launch switches are excluded from Release. iPad is outside this release's supported device family.
+
+SECURITY REVIEW SCOPE
+Reviewed app source, persistence, imports/exports, dependencies, privacy configuration, and Release payload. No third-party SDK/package dependencies, remote API calls, embedded API credentials/private keys found by the scoped source scan, tracking, analytics, login, or advertising implementation. No App Transport Security exceptions. App documents remain in its sandbox; export/share occurs at the coach's request. Apple device backups may contain app data according to device settings.
+
+The match clock uses Swift ContinuousClock. The inspected Release binary imports that standard-library API, not systemUptime/mach_absolute_time or other directly identified required-reason calls; no UserDefaults or file-timestamp reads are implemented. The required-reason list is empty on that reviewed basis. Recheck the Organizer privacy report and App Store processing messages for the FINAL build. Dependency/API changes require a fresh privacy review.
+
+This is a code and simulator review, not a claim that every possible vulnerability or hardware issue has been excluded. The local backup is bounded but may take time to validate near the size limit. Drawing data is decoded with Apple's PencilKit. A device passcode and appropriate handling of exported roster files remain important for the coach.
+
+APP REVIEW COVERAGE
+Completeness / accurate metadata: working native flows, fresh setup, no remote dependencies or hidden review features; store copy describes current functionality and limitations. Hardware/TestFlight signoff is outstanding.
+Public APIs: SwiftUI/UIKit/PencilKit/Foundation and official reserved-region APIs guarded for iOS 27.1. Older iPhones use adaptive fallback layouts.
+Minimum functionality / design: native match tracking, substitutions, rosters, editable playbook, backup/restore and teaching tools. Apple makes the final design/functionality judgment.
+Privacy: on-device processing, no tracking or accounts. Policy, sharing disclosure, deletion, and public-page templates prepared. Owner contact information and LIVE published policy/support links remain blockers.
+Accounts / purchases / social features: no login, subscriptions, paid in-app unlocks, or public user-content feed. Account deletion, Sign in with Apple, IAP, and public-feed moderation are not triggered by the present feature set. Reassess if these features are added.
+Health claims: Smart Subs uses time/position rules; it does not diagnose fatigue, prescribe recovery, or measure medical readiness. Coach confirmation and competition-rule responsibility remain explicit.
+Brand / legal / distribution: owner must confirm brand rights, Bundle ID/team ownership, agreements, age questionnaire, export answers, price/territories, and EU trader status. No legal declarations were made on the owner's behalf.
+
+REMAINING OWNER RELEASE GATES
+[x] Cody Squadroni, codysquadroni@gmail.com, and live public HTTPS URLs configured in Release/owner.json.
+[x] Personalized pages published through Sites with public access; both return HTTP 200 anonymously after normal path redirects. Public links are bundled in the rebuilt app.
+[ ] Confirm PitchHarbor name/brand rights and Bundle ID com.app.PitchRelay ownership. Existing signing team is W6K974HX85; verify it is yours.
+[ ] Test the final signed build through TestFlight on actual iPhone/Duo hardware, including outer display, physical fold changes, keyboard, accessibility settings, interruptions, persistence, and exports.
+[ ] Fully audit accessibility before claiming App Store accessibility labels. Limited automated checks do not certify every screen or drawing operation for VoiceOver.
+[ ] Complete account agreements, real review contact, age/privacy/export declarations, distribution availability, and pricing in App Store Connect.
+[ ] Validate and upload the signed archive, resolve Apple's build warnings, select that tested build, and submit. The local audit archive is unsigned.
+
+FILES
+SUBMISSION-GUIDE.txt — complete step-by-step owner instructions and official Apple links.
+REVIEW-NOTES.txt — factual reviewer notes to paste into App Store Connect.
+owner.json + configure.py — verified public contact details → bundled app configuration and public pages.
+privacy.template.html / support.template.html — pages ready to personalize and host.
+preflight.py — local payload/configuration check; does not publish or submit.
+../AppStore/ — Duo and ordinary iPhone screenshot assets and store copy.
+
+
+Additional visual correction: supporting text now uses an explicit adaptive, higher-contrast color on grouped surfaces, including older iOS versions. The setup step/saved labels use the brand action color. Disabled primary actions use a neutral surface with readable text instead of fading both text and background. At large Accessibility Text sizes, score/team information stacks, toolbar icons yield space to labels, controls scroll within a bounded area, and diagram jersey numbers stay inside their markers.
+
+VERIFICATION EVIDENCE
+• All 41 domain/persistence/rotation/geometry/security tests passed on both iPhone 16 Pro (iOS 18.3.1) and Duo (iOS 27.1): 82 successful runs. See build/ReleaseFlowVerified.xcresult.
+• All applicable functional UI workflows passed in that bundle: onboarding/draft resume, roster/positions, full-screen match/practice tools, score/substitution/undo, rotation, history, privacy/help/deletion, and Duo fold transitions. Two synthetic Duo transition tests are intentionally skipped on the ordinary iPhone; two opt-in capture tests skip during general testing.
+• That full bundle retains one iOS 18 setup contrast failure. It was fixed through the subsequent targeted contrast and large-text passes. The final setup contrast/hit-region/element-detection audit passes in build/ReleaseSetupContrastFinal.xcresult. Duo's corresponding audit passes in build/ReleaseVisualVerified.xcresult.
+• Normal full-screen match controls and largest Accessibility Text match controls pass on both devices in build/ReleaseVisualVerified.xcresult. That bundle also preserves the intermediate setup-footer contrast failure, corrected in ReleaseSetupContrastFinal. Enlarged screenshots were inspected; oversized jersey labels and broken toolbar wording were fixed. These focused checks are not full VoiceOver certification.
+• The final full/targeted verification bundles report no SwiftUI runtime layout warnings. Earlier ReleaseFlowAudit contains the superseded failures and keyboard layout warnings; removal of the redundant keyboard accessory resolved the latter.
+• Xcode Release static analysis completed without reported code findings. Final device archive: build/PitchHarbor-1.0-PublicSupport.xcarchive (unsigned, inspection only; supersedes the earlier Adaptive and Final archives). Contains iPhone device family [1], iOS 18 minimum, iOS 27.1 SDK, PitchHarbor name/icon/launch screen, privacy manifest, exempt-encryption Boolean, and no inspected demo/test strings.
+• Release/preflight-results.txt records the local payload checks. Owner contact/URL/page gates intentionally remain blocked until configured. A signing identity exists locally, but team ownership, distribution provisioning, App Store validation, and upload have not been performed.
+
+• Dark Mode setup accessibility passes in build/ReleaseExportAndDark.xcresult. Its initial export-test failure was an incorrect Button lookup for a native share-sheet Cell; the corrected Save Image flow passes in build/ReleaseExportVerified.xcresult, with no runtime warnings. The app includes the add-only Photos purpose string and explains this optional export in the policy.
+• Final screenshot capture flows pass in build/ReleaseDuoScreensFinal.xcresult and build/ReleasePhoneScreensFinal.xcresult. All 12 rendered PNGs are opaque and match Apple’s accepted dimensions: 8 Duo inner-display landscape images (2853 × 2007) and 4 ordinary-iPhone portrait images (1206 × 2622). The divided-layout screenshot uses documented injected division geometry; physical folding is still an owner hardware check.
+
+CLOSED-DISPLAY FOLLOW-UP
+Reproduced the closed Duo failure: a Debug marketing preview continued injecting book geometry on the outer display. Preview splits now disable in compact windows, live workspace frames follow available safe geometry, compact score/team text uses separate rows, page gutters reduce to 16 points, and compact labels remove icons when needed. Real reserved-region handling remains enabled. On iOS 27+, navigation bars no longer automatically minimize while scrolling through editing forms; Save/Cancel remain reachable.
+
+Verification: ClosedDuoLayout.xcresult passes five geometry and two closed-Duo UI tests, including non-overlapping 44-point player hit targets. CompactPhoneLayout.xcresult passes four phone/landscape/large-text workflows. DuoClosedFlowsVerified.xcresult passes setup, Smart Subs review/confirm/undo, and settings/privacy/erase flows. DuoAdaptiveFlows.xcresult includes a passing board/team navigation test, a setup failure subsequently fixed, and two inner-display transition skips because the simulator was closed. DuoClosedSetupFixed.xcresult retains a test-only Back-button lookup failure corrected for Duo's vertical toolbar in the final passing bundle. No runtime warnings in these final passing bundles.
+
+The previously pending inner-display simulator verification is addressed by the open-display follow-up below. Actual hardware validation is still required. The unsigned OpenLayouts archive builds successfully; local preflight still reports the same six owner/contact/hosting blockers. Refresh the marketing captures before submission to reflect the new compact scoreboard and spacing. The current screenshot kit predates this follow-up.
+
+
+OPEN-DISPLAY FOLLOW-UP
+Observed an off-screen dashboard and collapsed field in the running inner-display app; a fresh launch rendered correctly. The expanded dashboard now has explicitly bounded field/sidebar areas. Fold panes and the single-region fallback allocate their full viewport with a custom SwiftUI Layout instead of relying on drawing offsets. Major display-mode transitions refresh presentation geometry while preserving owner-held match/board state.
+
+Verification: six geometry checks and six Duo inner-display UI workflows pass across DuoOpenLayoutsVerified.xcresult and DuoPracticeResizeVerified.xcresult. The former retains a subpixel-coordinate assertion failure; the final focused practice pass compares actual window bounds with a half-point rounding tolerance. Four compact-phone/landscape/large-text workflows pass in OpenLayoutPhoneRegression.xcresult. No skips or runtime layout warnings in these runs. Earlier DuoBoundedLayout and DuoPresentationLayout retain practice-test failures caused by comparing landscape window coordinates with the application's portrait accessibility bounds.
+
+Open, book, tabletop, and practice captures are in Screenshots/*-fixed.png. The book/tabletop tests and captures inject reserved-region geometry on the inner-display simulator; actual native hinge transitions and physical hardware remain unverified. The original live damaged state was captured but was not reproduced with the automated resize controls. Release archive: build/PitchHarbor-1.0-OpenLayouts.xcarchive, unsigned and not uploaded. Thirteen local preflight checks pass; the six existing owner/contact/hosting gates remain blocked. Marketing artwork still needs refreshing before submission.
+
+
+INDEPENDENT DEVELOPER CONFIGURATION — OCTOBER 23, 2026
+Owner confirmed Cody Squadroni, codysquadroni@gmail.com, and Free launch pricing. owner.json and the bundled ReleaseContact.plist now contain the name and support email. Settings and the offline privacy policy display the developer and offer an Email Support link. The public support/privacy templates have been personalized and generated locally, with relative navigation until hosting is selected. No public URL has been invented.
+
+AppStore/SUBMISSION-FIELDS.txt, store-copy.txt, submission-metadata.json, and AGE-RATING-DRAFT.txt prepare the listing and factual questionnaire drafts. Review notes contain Cody's contact details. Copy length limits were checked. No App Store Connect record or declarations were submitted. The review contact phone number, live public URLs, territories/account declarations, brand confirmation, final screenshots, hardware checks, signing and upload remain outstanding. Free pricing does not determine EU trader status.
+
+PUBLIC PAGES PUBLISHED — OCTOBER 23, 2026
+Support: https://pitchharbor-support.codysquadroni.chatgpt.site/support.html
+Privacy: https://pitchharbor-support.codysquadroni.chatgpt.site/privacy.html
+Sites deployment succeeded with public audience; both pages load anonymously with verified contact details. Local desktop/mobile appearance and navigation were inspected. Metadata and bundled configuration use these live URLs. Name, email, local policy pages, and URL blockers above are now resolved; older follow-up paragraphs are historical.
+
+Final unsigned archive: build/PitchHarbor-1.0-PublicSupport.xcarchive. Release compilation and all 19 local preflight checks pass. No App Store Connect record was created or modified, and nothing was uploaded to Apple. Missing review-contact phone, territories/account choices, brand rights, refreshed marketing artwork, real-device/TestFlight signoff, signing, and Apple validation remain separate gates. Local preflight success is not Apple approval.
+
+
+NETLIFY WEBSITE CONFIGURED — OCTOBER 23, 2026
+Cody published the website at https://pitchharbor.netlify.app/ with support at /support and privacy at /privacy. All three pages returned HTTP 200 over verified HTTPS without authentication; titles and developer contact matched, and the privacy page identifies Netlify hosting.
+
+The app's bundled links, owner configuration, App Store support/privacy/marketing fields, generated public pages, and submission instructions now use Netlify. Website-Netlify/ remains the upload source. SITE-DEPLOYMENT.json preserves the previous Sites deployment as historical information; no hosting account was changed or previous site removed.
+
+New unsigned archive: build/PitchHarbor-1.0-Netlify.xcarchive. Archive succeeded and all 19 local preflight checks pass, including exact bundled owner/URL matches. This supersedes PublicSupport for the current release configuration. The submission-information ZIP was refreshed. No App Store Connect record was modified and no build was uploaded or submitted; existing signing, real-device testing, screenshot, account, and review-contact requirements remain.
+
+
+SETUP KEYBOARD FOLLOW-UP — OCTOBER 23, 2026
+User reported no keyboard while entering team name, age group, and season on a fully open Duo. Source inspection found that keyboard-driven geometry changes could change WorkspacePresentation identity and replace the entire setup form. FoldGeometryReader now allows editing forms to retain identity, and the wizard uses stable child positions with rectangle allocation instead of switching between separate form branches. Scroll/keyboard avoidance remains enabled; draft persistence and match/board presentation resets remain unchanged.
+
+Verification: SetupKeyboardPhone.xcresult and SetupKeyboardFreshDuo.xcresult pass both portrait and landscape keyboard tests (four total); each taps and types all three fields, checks keyboard presence and field visibility, and checks values after navigating forward/back. SetupKeyboardFlow.xcresult contains a passing complete setup/resume/roster workflow and one intermediate geometry-test assertion failure for an intentionally empty introduction rectangle. The corrected geometry assertion passes all seven checks in SetupKeyboardGeometry.xcresult. The original Duo runner stalled before tests; SetupKeyboardReproduction and SetupKeyboardFixed are interrupted infrastructure attempts, not functional results. Fully open physical Duo behavior remains to be verified on the owner's updated app; no device installation or hardware validation was claimed.
+
+Latest archive: build/PitchHarbor-1.0-KeyboardFix.xcarchive, unsigned. Release compilation and all 19 local preflight checks pass. Netlify URLs remain configured. No Apple upload or submission was performed.
+
+
+FORMATION SELECTION AND NUMERIC JERSEYS — OCTOBER 23, 2026
+Added 34 coaching formation presets for supported sizes 3v3 through 11v11. Setup, team editing, and match setup have filtered selection and an optional field preview. The team default is copied into new matches, can be overridden during match setup, and drives new practice boards. Field positions, current role defaults, and Smart Subs use the same selected formation. Later team changes do not rewrite existing matches or boards. Optional fields preserve old version-1 saves; imported incompatible formation IDs are rejected. See FORMATIONS-RESEARCH.txt for sources, exact choices, and conventions.
+
+Wizard and roster player editors now accept jersey numbers through a numeric keyboard with whole-number selection and Done. Empty, non-digit, out-of-range (0–99), and duplicate entries cannot be saved.
+
+Verification: all 51 domain tests pass in the finalized FormationDomainFinal.xcresult, including seven new catalogue/persistence/legacy/Smart Subs/number-validation checks. The initial FormationVerified run stalled during result finalization after a UI label-versus-value assertion and was stopped; its partial output is superseded. FormationUIVerified contains intermediate test selector failures and a jersey replacement usability issue; whole-value selection corrected the latter. Both final UI flows pass in FormationUIFinal.xcresult: setup → formation → numeric player → review → roster edit → team formation → match override; and changing 11v11 to 7v7 filters choices and retains the chosen formation. Match setup screenshot inspected from FormationFinalAttachments. Tests ran on iPhone 16 Pro (iOS 18.3.1); this change has not been physically tested on Duo.
+
+Latest archive: build/PitchHarbor-1.0-Formations.xcarchive, unsigned. Release compilation and all 19 local preflight checks pass. No build was uploaded or submitted to Apple.
+
+
+GUEST PLAYERS FOLLOW-UP — OCTOBER 23, 2026
+Teams → Guest Players supports Club Pass, Player Pass, and Guest additions for one game. Pending guests persist locally, enter Match Setup attendance, can be starters or bench, and are cleared from the next-match queue when a match is successfully created. They never become permanent roster members automatically. Active-match additions are available through Teams, Match Options, and Full Screen → More; they begin on the bench with zero minutes. Smart Subs uses all approved positions, playing time, and real-time bench rest. Match records retain pass labels and guest details. No registration/pass document numbers or new online data collection are introduced.
+
+Guest edits preserve current intervals and positions on the field. Add/edit clears obsolete undo snapshots. Remove is available for pending guests and unstarted bench guests; after kickoff, use Not Ready to retain history. Validation enforces bounded combined rosters, unique player IDs/jersey numbers, valid positions, and explicit destination ownership. Failed writes roll back changes and match creation restores the pending queue. Existing version-1 archives remain readable.
+
+Verification: 59 domain tests pass (GuestDomainVerified.xcresult), including one-game attendance, starter selection, backup round trips, late-arrival alternate-position recommendations, return rest, minute conservation, invalid targets/data, removal, and failed persistence. Team/setup and live full-screen UI flows pass on iPhone 16 Pro (GuestUI.xcresult). GuestPositionsVisibleUI.xcresult explicitly checks alternate-position selection and saved labels after scrolling the last grid control fully into view. The prior strengthened assertion run stalled during failure diagnostics and was stopped; it exposed a partial-visibility test tap, not lost persisted state. Release archive build and 19 local preflight checks pass.
+
+Latest unsigned archive: build/PitchHarbor-1.0-Guests.xcarchive. Rebuild/install for device testing. Physical Duo acceptance, signing, App Store validation/upload, and Apple review remain outstanding.
+
+
+Starting Lineup and Drag-and-Drop Follow-up — October 23, 2026
+
+Root cause: starting players were assigned to formation slots in roster order, regardless of their recorded positions. Automatic selection now uses an exact approved-role matching across the attending squad, maximizing filled positions, then preferring the main goalkeeper and other main positions. It leaves an uncovered role empty instead of assigning an unapproved player. Existing saved matches are not silently rewritten: before kickoff, use Lineup → Auto Pick → Save Lineup.
+
+The lineup editor supports drag-and-drop bench replacement, field swaps, moving players to the bench, and tap-based selection. It shows position labels, approved main/alternate roles, open slots, and explicit warnings for manual out-of-position choices. Drafts save or cancel without unintended changes. Full-screen match mode provides a bench dock, with a side rail for short landscape. Live bench-to-field drops open the existing substitution review; field swaps and vacant-position entries require confirmation. Minute intervals and stint origins are preserved, stale targets are rejected, and failed saves roll back changes.
+
+Verification: all 68 domain tests plus six phone UI tests pass in build/LineupPhoneFinal.xcresult. These cover approved-role assignment for every formation, the reported roster's role distribution, explicit overrides, slot persistence, invalid targets, minute/stint conservation, save rollback, drag tokens, editor drag/tap/save/cancel, live substitutions, closed/landscape controls, large text, and guest setup. Both new lineup UI workflows pass on a clean Duo outer-display simulator in build/LineupCleanDuo.xcresult. The original Duo simulator could not launch its test runner; a disposable clean simulator resolved that environment failure. Native inner-display/fold transitions and physical device use were not verified in this follow-up. QA image: Screenshots/duo-starting-lineup.png.
+
+Latest unsigned archive: build/PitchHarbor-1.0-Lineups.xcarchive. Release archive succeeded and all 19 scoped local preflight checks pass. Rebuild/install for device testing. No build was uploaded or submitted to Apple; signing, physical-device acceptance, and App Store validation remain outstanding.
+
+
+Two-Tap Lineup Editing — October 23, 2026
+
+Edit Starting Lineup now selects an occupied field player directly instead of opening the player list. Tap a player to highlight them with a mint outline/checkmark, then tap another field or bench player to swap. Bench-to-field works in either order. Tap the selected player again or Cancel Selection to clear it. Selecting a different bench player changes selection. Drag-and-drop remains available; an empty slot can still open the position picker when no player is selected. Selection is exposed to VoiceOver. Selection hints reserve space so the field and bench do not shift between taps. Save/cancel and out-of-position review remain unchanged.
+
+The project README records the coaching UX principle: routine changes should use direct field interaction and fewer taps, keeping attention on the game or practice. The in-app help describes the new interaction.
+
+Latest unsigned archive: build/PitchHarbor-1.0-TwoTap.xcarchive. Release archive succeeded; all 19 local preflight checks pass. No upload or submission was performed.
+
+Verification: both final phone UI workflows pass in build/LineupTwoTapFinal.xcresult, including highlighting, repeated-tap cancellation, explicit cancellation, field swaps, swaps between field and bench in both orders, save/cancel, role warnings, and existing live drag substitutions. The Duo tap-selection workflow passed in the first run. Its initial bench drag did not move the player; the unchanged drag-and-live-substitution workflow passed on an isolated retry (29.408 seconds, zero failures). The first Duo result collection stalled after test execution and was interrupted. QA screenshot: Screenshots/lineup-two-tap-selection.png. Physical Duo folding and fully open display acceptance remain outstanding.
+
+Both Duo commands stalled during diagnostic/result finalization after reporting execution outcomes and were stopped. Raw test logs are retained under Release/LineupTwoTap-Duo*.log; the completed phone result bundle remains authoritative for its two passing UI workflows.
+
+
+Direct Coaching Workflows — October 23, 2026
+
+The fewer-taps principle is now applied to Match Day and Practice, not only the starting-lineup editor. Match Day supports selecting any field or bench player and tapping a second player to swap. Approved pre-kickoff changes save directly; live substitutions arrive at review with both players chosen, while field-position changes retain one confirmation. Selection clears when the match, phase, recovery state, or presentation changes. The Subs list remains available and uses the selected player as its starting choice. Position-change confirmation captures its request data rather than rereading transient state during alert dismissal.
+
+On compact Match Day, the field comes before Smart Subs. A horizontal bench strip accompanies the main field card; full-screen docks, landscape rails, and folded panels share the interaction and visible/accessible selection.
+
+Practice supports tapping a marker then an empty spot to move, or tapping two markers to swap. Added objects are selected for immediate placement. Dragging, drawing, and arrows remain available; switching to drawing clears selection. These edits save automatically with Undo/Redo. In-app guidance and Release/COACHING-UX.txt describe the consistent coaching interaction rules.
+
+Latest unsigned archive: build/PitchHarbor-1.0-CoachingFlow.xcarchive. Archive succeeded; all 19 scoped local preflight checks pass. No Apple upload or submission was performed. Captures: Screenshots/duo-quick-live-swap.png and Screenshots/duo-practice-tap-move.png. These are Duo outer-display simulator captures; physical fully open and partially open hardware validation remains outstanding.
+
+Verification: both direct-coaching UI workflows pass on the Duo simulator in build/CoachingQuickActionsDuo.xcresult. Practice passes on iPhone in CoachingQuickActionsFinal.xcresult, and the final live flow passes in CoachingPhoneLiveFinal.xcresult. Nine lineup domain tests pass, including role matching, persistence, live minute/stint preservation, stale-target rejection, and save rollback. The initial suite also passed closed-display controls, compact landscape controls, and full-screen practice tools. Phone position-swap assertions initially read the underlying field before the native alert finished dismissing; waiting for dismissal and the expected updated label passes without changing the final app binary. A diagnostic compile exceeded Swift's type-check budget; extracting the confirmation modifier resolved it.
+
+The mixed diagnostic phone run (CoachingQuickActionsFinal) stalled collecting results after reporting the practice/domain passes and the early-read UI assertion; its process was stopped and its log is preserved at Release/CoachingQuickActionsFinal.log. The final phone live and Duo bundles completed successfully.
+
+
+Formation-Aware Midfield Roles — October 23, 2026
+
+Adds LM/RM to preferred and alternate player positions, validation, and exact role matching. 4–3–3 supports Balanced, Wide, Holding, Attacking, and Two Attacking Mids through one shared Midfield Setup control. Shape labels, slot roles, Auto Pick, and Smart Subs use the same formation definition; DM/AM placement reflects the chosen depth. Team defaults and Match Setup expose the control, and Edit Starting Lineup can change it on an existing ready match. Save changes the lineup and formation together, validates role overrides, and rolls back on storage failure. Editing in Match Setup does not trigger a second Auto Pick that would overwrite manual choices.
+
+Revised wide-midfield presets use new IDs and LM/RM in midfield rows while retaining LW/RW for forwards. Original IDs and nil legacy formations remain readable with original definitions, preventing silent changes to existing matches or boards. Existing player approvals are not broadened automatically. The catalogue contains 38 presets/variants. Research notes are in Release/FORMATIONS-RESEARCH.txt.
+
+Verification: all 71 domain tests pass in build/MidfieldRoles.xcresult, including exact role matching across every preset, LM-only substitution coverage, persisted midfield changes, legacy definitions, invalid IDs, and refusal to change the setup after kickoff. The existing onboarding/team formation and numeric-jersey workflow passes in that run. Its new editor test reached the final selector-value assertion after successful save/cancel checks; an explicit accessibility value resolves that assertion. Both final editor/landscape and LM/RM roster-editing workflows pass in build/MidfieldUIFinal.xcresult. Landscape checks cover hit targets, field bounds, and marker overlap.
+
+Latest unsigned archive: build/PitchHarbor-1.0-MidfieldRoles-Final.xcarchive. Archive succeeded; all 19 scoped local preflight checks pass. No Apple upload or submission was performed. QA capture: Screenshots/formation-midfield-roles.png. Physical open/partial-open Duo validation remains required.
+
+Duo follow-up: the outer-display layout test detected overlap with staggered midfield roles. Short portrait fields now use the compact marker layout, retaining number, name, role, and 44-point targets; the existing full-height layout remains available when space permits. Compact cross-field placement uses the actual minimum/maximum coordinates of each row, so staggered rows no longer assume evenly spaced column indexes. The midfield editing/layout workflow then passed. The closed-display assertion initially rejected a simulator-reported height of 43.99999999999997; the test now allows 0.01 point of arithmetic tolerance, without reducing the app's 44-point target. The final unsigned archive includes this adjustment and passes all 19 local checks.
+
+Final Duo verification: build/MidfieldDuoVerified.xcresult completed successfully with both closed-display controls and the midfield editor/save/cancel/spacing workflow passing. LM/RM roster saving also passed on Duo in the earlier run. The original overlap diagnostic run stalled collecting results and was stopped; its log is retained at Release/MidfieldDuo-Diagnostic.log. Final Duo screenshot: Screenshots/duo-midfield-roles.png. These runs verify the outer-display simulator; physical inner-screen and native fold transitions were not tested in this follow-up.
+
+
+October 23, 2026 — Saved Team Lineups, Quick Attendance, and Return to Match
+
+Changes
+- Return to Match is a standalone, full-width button above TabView instead of an inset attached to the tab container. It explicitly selects the active match, resets the Match Day navigation path, and switches tabs. It also appears for a ready match. An existing save error does not hide the return action.
+- Selecting an already selected match is a no-op in the store, so returning preserves Undo, score, and the running clock. Invalid match IDs are ignored.
+- Teams → Starting Lineup opens the existing two-tap and drag-and-drop editor for the permanent roster, independent of attendance. Saved templates require approved positions; match-specific explicit overrides remain available.
+- Native availability switches sit beside each permanent player. Off means absent from new-game default attendance. This does not remove saved starters or change existing game snapshots.
+- Match Setup uses available saved starters. Its exact matching algorithm maximizes covered approved roles, then saved slot preferences, then main positions. This can reposition an eligible saved starter to cover more roles. It never invents goalkeeper eligibility.
+- Match attendance switches recalculate defaults immediately. After manual lineup editing, existing draft assignments remain fixed and only vacancies are filled. Returning players can be explicitly included for that game even if the team availability default remains off.
+- Team templates are optional in version-1 archives. Restore validates slots, unique players, roster membership, format, and formation. Roster removals prune saved slots; changing team format or formation clears incompatible templates. Failed writes roll back availability and lineup edits.
+
+Initial verification
+All 78 logic tests in 9 suites passed in the TeamDefaultsPhoneVerified run. The return banner passed on iPhone 16 Pro and Duo in portrait/landscape. Existing two-tap lineup editing and LM/RM roster editing passed in TeamDefaultsPhoneFinal. Initial new UI tests exposed automation-only issues: duplicate Cancel matches from a covered sheet and tapping a native switch label rather than its switch control. The first mixed runner stalled collecting diagnostics after tests completed and was stopped; its log is retained in build/TeamDefaultsPhoneVerified.log.
+The unsigned build/PitchHarbor-1.0-TeamLineups.xcarchive archived successfully; all 19 local preflight checks pass. No App Store upload or physical-device installation was performed.
+
+Final phone verification: build/TeamAttendancePhone.xcresult passed the full saved-template → availability off → approved replacement → match attendance on → preferred starter restored → create match flow, and verified the match override did not change team availability or the template. The passing screenshot is Screenshots/saved-team-starting-lineup.png. Duo banner verification passed in TeamDefaultsDuoVerified; the attendance test's unnecessary pull-down gesture dismissed its sheet and was removed. A retry launched during previous diagnostics exited before test execution; the final retry runs in isolation. These test-harness issues did not require product code changes.
+
+Final Duo verification: build/TeamAttendanceDuoFinal.xcresult PASSED the complete saved-team lineup and attendance workflow, including match creation and preserving the original team template and availability. All requested workflows now have passing simulator evidence. The temporary Duo QA simulator was removed after verification; the owner's existing Duo simulator was not modified. This run verifies the simulator's current display and banner rotation, not physical fully open/partially open hardware.
+
+
+October 23, 2026 — Manual Lineup Save Correction
+The prior team editor disabled Save for positions outside player profiles, and the default-match optimizer could reshuffle saved choices. Both behaviors conflicted with the coach's requested manual control and are superseded by this correction.
+
+- Team templates accept any roster player in any valid slot; duplicate players, invalid slots, and missing roster references still fail validation.
+- Save Lineup directly saves custom positions in team, match setup, and ready-match editors without a position-approval popup. Match editors still require at least one starter; team templates may be saved empty. Storage failure remains visible and preserves the draft.
+- New team templates open empty. Auto Pick is optional; it fills an empty field in one tap and asks before replacing an existing draft.
+- Match setup treats available saved starters as fixed assignments, including custom roles. Only vacant positions receive eligible automatic replacements. Attendance changes preserve custom manual assignments, and missing players do not cause other starters to move.
+- Ready-match field swaps save directly regardless of profile roles. Live-match substitution and timing confirmations remain in place. Player profiles are never silently changed by a lineup choice.
+
+Verification: all 79 logic tests in 9 suites passed in CustomLineupsPhone, including custom-role persistence/restore, absence/return handling, fixed-slot coverage, match creation, invalid-data rejection, and storage rollback. Midfield save/cancel/geometry UI regression also passed. The initial new UI workflow reached saved-template persistence and match creation, then hit an ambiguous test selector for a player in the editor and the covered field; the test now scopes that target to lineupField.
+
+Final phone custom-lineup test PASSED in build/CustomLineupsPhoneFinal.xcresult. It verifies empty-team setup, one-tap optional Auto Pick, assigning a CM to GK and GK to CM, saving/reopening, carrying those exact slots into match creation, editing the ready match again, and direct pre-kickoff swaps without approval dialogs. The final unsigned archive build/PitchHarbor-1.0-CustomLineups-Final.xcarchive built successfully and passed all 19 local preflight checks.
+
+Final Duo Save regression PASSED in build/CustomLineupSaveDuo.xcresult. It manually builds and saves a partial team template (GK in CM, RB in GK), reopens it unchanged, then saves and reopens a ready-match goalkeeper/midfielder swap with no approval dialog. The full phone match-creation flow passed; the broader Duo test stopped at match-settings switch automation (row tap did not toggle; the follow-up native-child selector was not exposed on this runtime). No full Duo match-creation pass is claimed for this correction. The core requested Save behavior is verified on both simulators. Physical-device installation and open/partial-open hardware acceptance remain outstanding.

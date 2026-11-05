@@ -1,0 +1,72 @@
+PITCHHARBOR — APP STORE CONNECT ENTRY SHEET
+Prepared October 23, 2026 • English (U.S.) • Version 1.0
+Status: prepared local files; no App Store Connect record has been created or modified in this task.
+
+CONFIRMED OWNER INFORMATION
+Developer / seller: Cody Squadroni (individual developer)
+Support email: codysquadroni@gmail.com
+Launch price: Free (confirmed by Cody)
+Copyright: 2026 Cody Squadroni
+
+An individual Apple Developer account uses the enrolled person's legal name. Xcode still calls its signing identity a “Team”; this does not mean you need a company or employees. Confirm that the existing project Team ID W6K974HX85 belongs to your individual paid Developer Program account. Do not remove it merely because you are working alone.
+
+APP RECORD
+Platform: iOS
+Name: PitchHarbor — subject to App Store name availability and brand rights
+Primary language: English (U.S.)
+Bundle ID: com.app.PitchRelay — must match your registered identifier and signed build
+SKU: pitchharbor-ios — internal suggested identifier; not visible to customers
+Version: 1.0
+Primary category: Sports
+Secondary category: Utilities
+Made for Kids: No; this is a coaching utility, not a Kids Category product
+Game Center: No
+Sign-in required: No
+In-app purchases, subscriptions, and advertising: None
+Price: Free
+
+LISTING COPY
+Use store-copy.txt for the exact name, subtitle, promotional text, description, and keywords. submission-metadata.json contains the same information in structured form. The published homepage is ready for the optional Marketing URL field.
+
+PUBLIC LINKS — PUBLISHED
+Marketing URL: https://pitchharbor.netlify.app/
+Privacy Policy URL: https://pitchharbor.netlify.app/privacy
+Support URL: https://pitchharbor.netlify.app/support
+A full business website or purchased domain is unnecessary. The homepage, support, and privacy pages are published using Netlify at public HTTPS addresses without a login. The website upload folder is Website-Netlify/. Editable support/privacy templates and generated copies are in Release/. The support page includes Cody's contact email. Do not paste a local file path, private preview, mailto URL, or made-up address into these URL fields.
+
+APP REVIEW CONTACT
+First name: Cody
+Last name: Squadroni
+Email: codysquadroni@gmail.com
+Phone: Cody must supply a reachable phone number; leave unset until provided
+Demo account: Not required
+Notes: paste Release/REVIEW-NOTES.txt
+
+APP PRIVACY — DRAFT FOR FINAL VERIFICATION
+Suggested response for the current implementation: No, we do not collect data from this app (Data Not Collected).
+Basis: rosters, player positions, minutes, scores, and boards are processed locally; no account, developer server, analytics, advertising, tracking, or third-party collection SDK. User-directed exports use system share/file interfaces. Support is initiated by the user through email; no automated support upload exists. Review the actual support practice before submitting this declaration, especially if you begin routinely collecting backups or diagnostics.
+Privacy policy still required even with Data Not Collected. The bundled manifest does not replace App Store Connect's privacy questionnaire.
+
+AGE RATING — PREPARED ANSWERS, NOT A SUBMITTED RATING
+Use AGE-RATING-DRAFT.txt. Apple calculates global and regional ratings from the current form. Do not enter a predetermined 4+ or 9+ rating by assumption.
+
+OTHER DECLARATIONS
+Encryption: current binary declares no non-exempt encryption. It uses Apple system protection and no custom crypto. Confirm this still describes the final build and answer Apple's processing questions accordingly.
+Regulated medical device: current app is a coaching utility and does not diagnose or treat conditions; answer based on that functionality if asked.
+Content rights: confirm ownership/permission for all included artwork, text, and branding before attesting. No third-party content feed is built in.
+EU trader status: owner determination required; being independent or offering the app free does not by itself decide this.
+Territories, tax/account agreements: owner selection required; not entered here.
+Mac and Apple Vision availability: recommended off until tested on those environments.
+Accessibility labels: leave unclaimed until Apple's full criteria for each claimed feature are verified.
+Release timing: recommend manual release after approval so you control launch day; not selected in App Store Connect.
+
+SCREENSHOTS AND BUILD
+Existing artwork is in AppStore/duo-inner and AppStore/iphone-medium. Refresh it to reflect the final UI before uploading; the current kit predates the latest layout changes. The updated visual QA captures in Screenshots/ are not automatically the finished App Store artboards.
+The current local archive is unsigned and cannot be uploaded as-is. Public URLs are configured. Sign, validate, upload, and complete final hardware/TestFlight verification first.
+
+OFFICIAL REFERENCES (CHECKED OCTOBER 23, 2026)
+Individual developer names: https://developer.apple.com/help/app-store-connect/create-an-app-record/set-your-developer-name/
+App information: https://developer.apple.com/help/app-store-connect/reference/app-information/app-information/
+Version fields and limits: https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information/
+Privacy definitions: https://developer.apple.com/app-store/app-privacy-details/
+Age rating definitions: https://developer.apple.com/help/app-store-connect/reference/app-information/age-ratings-values-and-definitions/

@@ -1,0 +1,38 @@
+[
+  {
+    "file": "iphone-medium/01-match-day.png",
+    "source": "captures/iphone/01-match-day.png",
+    "headline": "Every Match. Under Control.",
+    "description": "Score, time, players. Together on your touchline.",
+    "width": 1206,
+    "height": 2622,
+    "alpha": false
+  },
+  {
+    "file": "iphone-medium/02-smart-subs.png",
+    "source": "captures/iphone/02-smart-subs.png",
+    "headline": "The Right Player. At the Right Time.",
+    "description": "Review position-aware substitutions and bench rest.",
+    "width": 1206,
+    "height": 2622,
+    "alpha": false
+  },
+  {
+    "file": "iphone-medium/03-practice.png",
+    "source": "captures/iphone/03-practice.png",
+    "headline": "Show the Play. Make It Clear.",
+    "description": "A full-field board for your next coaching moment.",
+    "width": 1206,
+    "height": 2622,
+    "alpha": false
+  },
+  {
+    "file": "iphone-medium/04-setup.png",
+    "source": "captures/iphone/04-setup.png",
+    "headline": "Your Team. Ready to Play.",
+    "description": "A simple setup. Your players. Your plan.",
+    "width": 1206,
+    "height": 2622,
+    "alpha": false
+  }
+]

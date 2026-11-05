@@ -1,0 +1,30 @@
+PitchHarbor — Fewer Taps. Eyes on the Game.
+
+Product Principle
+Routine actions should keep the coach focused on players, the field, and the clock. Prefer direct manipulation and clear feedback over extra screens, long lists, and repeated entry. Keep the same interaction wherever possible across match day, lineup editing, and practice.
+
+Working Rules
+• Tap a player to select; tap again to cancel. Show selection visually and announce it to VoiceOver.
+• Tap a second player to swap. Keep drag-and-drop as an alternative, never the only path.
+• Keep the field and frequently needed controls within reach. Put secondary information after primary actions on compact screens.
+• Bring selected players into substitution review automatically. A live change needs one clear confirmation so minutes begin at the actual change.
+• Save routine practice edits automatically and support Undo/Redo. Keep explicit confirmation for ending a period or destructive actions.
+• Do not move controls underneath a coach between taps. Respect safe areas, folded regions, large text, and 44-point touch targets.
+• Prefer remembered context and sensible defaults; do not invent player positions or silently override coaching choices.
+
+Applied in This Pass
+Match Day: direct player selection and two-tap swaps, including before kickoff without opening the lineup editor. Live substitutions open with both players chosen. Field-to-field live swaps use the existing position-change confirmation. The list-based Subs button remains available and starts from the selected player.
+Compact Match Day: field first, Smart Subs below; a horizontal bench strip alongside the field card keeps replacement players together. Full-screen and folded layouts use the same selection behavior.
+Practice: select a marker and tap a destination, or tap two markers to swap. Newly added objects are selected for immediate placement. Moves/swaps save automatically and support Undo/Redo; switching to drawing clears selection.
+
+Not a Claim of Complete Hardware Coverage
+Check actual closed, partially open, and fully open Duo postures before release. Simulator and local release checks do not replace physical-device acceptance or Apple review.
+
+Saved Preparation and Fast Return
+Teams: save the usual starting lineup once, then use one availability switch per player. Absence must not erase a saved starting spot. Match setup uses available preferred starters and approved replacements; manual match edits stay fixed when attendance changes. Team changes never rewrite an existing match snapshot.
+Navigation: the Return to Match banner must be a dedicated, full-row tap target that returns from every tab, keeps the game running, and preserves Undo when the same game is already selected.
+
+Manual Lineups Belong to the Coach
+Never disable Save or demand a position-approval popup for a manual starting lineup. A player profile guides suggestions; it is not a restriction. Keep saved players in their exact slots at match setup, even if automatic reshuffling could cover more roles. Fill only empty spots from available eligible players. Start a new team template empty and offer Auto Pick explicitly.
+
+Consistency update: permanent Delete actions name the record, explain what is removed, offer Cancel, and preserve data if saving fails. Roster/guest removal uses Remove because existing match snapshots remain. Field substitutions apply on the second tap or drop, keep play and rest timing accurate, and provide Undo. Do not insert a selection or confirmation sheet after the coach has already chosen both players. Any Position covers all canonical roles including GK and keeps a preferred role for automatic selection. Display names are team-configurable aliases, never matching keys.

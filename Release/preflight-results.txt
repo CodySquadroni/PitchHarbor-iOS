@@ -1,0 +1,21 @@
+PASS Public app name
+PASS iPhone device family
+PASS Exempt encryption declaration
+PASS Native launch screen
+PASS Add-only Photos purpose for board image export
+PASS Minimum iOS version
+PASS Compiled app icon
+PASS Bundled no-tracking/on-device privacy manifest
+PASS No App Transport Security exceptions
+PASS Release excludes demo data and test switches
+PASS No test bundles in app
+PASS Owner setting bundled: developerName
+PASS Owner setting bundled: supportEmail
+PASS Owner setting bundled: privacyURL
+PASS Owner setting bundled: supportURL
+PASS Generated public privacy page (hosting must be checked separately)
+PASS Generated public support page (hosting must be checked separately)
+PASS Required ordinary iPhone screenshot set
+PASS Duo screenshot set
+
+0 local blocker(s). Physical testing, hosted URLs, account declarations, and App Store validation still require verification.

@@ -1,0 +1,52 @@
+{
+  "status": "Prepared Locally — Not Entered in App Store Connect or Submitted",
+  "locale": "en-US",
+  "platform": "IOS",
+  "name": "PitchHarbor",
+  "subtitle": "Soccer Coaching, Match & Plays",
+  "promotionalText": "Stay with the game. Track scores and player minutes, plan your next substitution, and turn your iPhone into a full-screen tactics board.",
+  "description": "Your Team. Every Moment.\n\nKeep your attention on the match with PitchHarbor, a native soccer coaching app for iPhone. Manage your team, track the game, and explain the next play from one workspace.\n\nMatch Day at a Glance\nTrack the score, match clock, lineup, substitutions, and player minutes. Pause and resume play, manage both halves, correct the score, and undo the latest eligible goal or substitution. Review completed matches and share a report.\n\nSmart Subs That Follow the Game\nUse player positions, time on the field, and time on the bench to plan your next change. Smart Subs suggests who could come on, whom they could replace, and which position they could cover. Adjust playing-stint and bench-rest targets, then review and confirm each substitution yourself.\n\nA Whiteboard for Your Team\nMove player markers, draw routes, add passing arrows, opponents, cones, and balls, and save coaching notes. Use the full-screen field for halftime talks and practice. Hide the tools to give your players a clear view, then bring them back when you need them.\n\nRoom to Coach\nExpanded layouts put the pitch beside your match controls. Supported divided-screen layouts keep the field and controls in separate usable areas, with options to swap sides or panels. Compact layouts keep the same tools accessible on other iPhones.\n\nPlayers and Positions\nCreate teams and rosters with jersey numbers, a preferred position, and multiple approved alternatives. Confirm attendance and starters before kickoff so recommendations reflect the players available that day.\n\nYour Team From the Start\nA guided setup helps you create a team, choose match defaults, and add players. You can also add the roster later and start with the practice board.\n\nOffline and Under Your Control\nNo account, ads, in-app purchases, or subscription. Coaching data stays on your device unless you choose to share or export it. Export an editable backup to keep your teams, matches, and boards when changing devices.\n\nSmart Subs follows coach-set rotation preferences; it does not measure fatigue, assess injuries, or determine physical recovery. The match clock is a coaching reference, and the referee controls official time. This version supports two-half matches and returning substitutions; confirm the rules for your competition.\n\nCreated by independent developer Cody Squadroni.",
+  "keywords": "football,lineup,substitutions,tactics,whiteboard,roster,timer,training,bench,team",
+  "primaryCategory": "SPORTS",
+  "secondaryCategory": "UTILITIES",
+  "copyright": "2026 Cody Squadroni",
+  "developer": {
+    "name": "Cody Squadroni",
+    "enrollmentType": "Individual",
+    "supportEmail": "codysquadroni@gmail.com"
+  },
+  "version": "1.0",
+  "bundleId": "com.app.PitchRelay",
+  "sku": "pitchharbor-ios",
+  "supportURL": "https://pitchharbor.netlify.app/support",
+  "privacyPolicyURL": "https://pitchharbor.netlify.app/privacy",
+  "marketingURL": "https://pitchharbor.netlify.app/",
+  "price": {
+    "type": "Free",
+    "amount": 0,
+    "confirmedByOwner": true
+  },
+  "inAppPurchases": false,
+  "subscriptions": false,
+  "ads": false,
+  "reviewContact": {
+    "firstName": "Cody",
+    "lastName": "Squadroni",
+    "email": "codysquadroni@gmail.com",
+    "phone": null
+  },
+  "signInRequired": false,
+  "reviewNotesFile": "../Release/REVIEW-NOTES.txt",
+  "releaseMethodRecommendation": "Manual After Approval",
+  "territories": null,
+  "privacyDraft": "Data Not Collected — verify final build and support practices before declaring",
+  "ageRating": "Calculated by Apple from the questionnaire; not assigned locally",
+  "contentRights": "Developer must confirm rights to all distributed assets and the brand",
+  "accessibilityLabels": "Do not claim full support until each applicable Apple criterion has been verified",
+  "pending": [
+    "App Review contact phone",
+    "Territory selection and applicable account declarations",
+    "Brand availability and rights confirmation",
+    "Final hardware testing, screenshots, signing, and upload"
+  ]
+}

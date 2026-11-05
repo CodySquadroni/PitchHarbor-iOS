@@ -1,0 +1,59 @@
+App Name
+PitchHarbor
+
+Subtitle
+Soccer Coaching, Match & Plays
+
+Promotional Text
+Stay with the game. Track scores and player minutes, plan your next substitution, and turn your iPhone into a full-screen tactics board.
+
+Description
+Your Team. Every Moment.
+
+Keep your attention on the match with PitchHarbor, a native soccer coaching app for iPhone. Manage your team, track the game, and explain the next play from one workspace.
+
+Match Day at a Glance
+Track the score, match clock, lineup, substitutions, and player minutes. Pause and resume play, manage both halves, correct the score, and undo the latest eligible goal or substitution. Review completed matches and share a report.
+
+Smart Subs That Follow the Game
+Use player positions, time on the field, and time on the bench to plan your next change. Smart Subs suggests who could come on, whom they could replace, and which position they could cover. Adjust playing-stint and bench-rest targets, then review and confirm each substitution yourself.
+
+A Whiteboard for Your Team
+Move player markers, draw routes, add passing arrows, opponents, cones, and balls, and save coaching notes. Use the full-screen field for halftime talks and practice. Hide the tools to give your players a clear view, then bring them back when you need them.
+
+Room to Coach
+Expanded layouts put the pitch beside your match controls. Supported divided-screen layouts keep the field and controls in separate usable areas, with options to swap sides or panels. Compact layouts keep the same tools accessible on other iPhones.
+
+Players and Positions
+Create teams and rosters with jersey numbers, a preferred position, and multiple approved alternatives. Confirm attendance and starters before kickoff so recommendations reflect the players available that day.
+
+Your Team From the Start
+A guided setup helps you create a team, choose match defaults, and add players. You can also add the roster later and start with the practice board.
+
+Offline and Under Your Control
+No account, ads, in-app purchases, or subscription. Coaching data stays on your device unless you choose to share or export it. Export an editable backup to keep your teams, matches, and boards when changing devices.
+
+Smart Subs follows coach-set rotation preferences; it does not measure fatigue, assess injuries, or determine physical recovery. The match clock is a coaching reference, and the referee controls official time. This version supports two-half matches and returning substitutions; confirm the rules for your competition.
+
+Created by independent developer Cody Squadroni.
+
+Keywords
+football,lineup,substitutions,tactics,whiteboard,roster,timer,training,bench,team
+
+Primary Category
+Sports
+
+Secondary Category
+Utilities
+
+Copyright
+2026 Cody Squadroni
+
+Price
+Free
+
+Developer
+Cody Squadroni
+
+Support Email
+codysquadroni@gmail.com

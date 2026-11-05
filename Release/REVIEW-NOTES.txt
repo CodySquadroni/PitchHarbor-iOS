@@ -1,0 +1,19 @@
+Developer: Cody Squadroni (Independent Developer)
+Review Contact: codysquadroni@gmail.com
+Price: Free
+
+PitchHarbor is a native, offline soccer coaching tool for iPhone, including adaptive Duo layouts. No account, sign-in, purchase, subscription, server, or special access is required.
+
+First launch: enter a team name, choose match defaults, add players (or skip and add them later in Teams), review, and finish. The Release build intentionally contains no fictional teams or matches.
+
+To review Match Day: add several players with jersey numbers and positions. Set up a match, enter an opponent, confirm attendance/starters and competition settings, and create it. A short-handed lineup can be explicitly confirmed. Start Match enables goals, pause, substitutions, and End Half. Start Second Half and Full Time complete the match. Match Options contains history, score correction, and discard for unstarted matches.
+
+Smart Subs recommends players and positions based on coach-entered approved positions, stint targets, rest time, and availability. Recommendations require coach confirmation and do not assess medical fitness or replace competition rules. Use Rotation Plan to adjust targets or match-specific roles. Include more attending players than starters to review bench suggestions.
+
+Practice lets you create editable boards with markers, arrows, and ink. Show Players expands the field. Hide Tools/Tools toggles controls. Duo divided layouts reserve space around the division and offer Swap Sides/Swap Panels; regular iPhones use compact layouts. Board drawing changes tactics, not the live lineup.
+
+Data & Settings (also accessible during setup) contains the coaching guide, privacy policy, editable backup export/restore, and confirmed Erase All Local Data. Restore and erase are disabled during an active match. Share actions use system interfaces and occur only at the coach's request. Save Image can request add-only Photos permission to save a tactics board; the app does not read the photo library.
+
+The app clock is a coach's reference. The referee controls official time. An interrupted running clock asks the coach to review the elapsed estimate before resuming. The app supports two-half match formats; it does not enforce every league's substitution rules.
+
+Store screenshots use demonstration content created only for screenshots; the same features are available with the reviewer's own team. No review-only functionality is enabled.

@@ -1,0 +1,28 @@
+PitchHarbor Coaching Consistency QA — October 23, 2026
+
+Release archive (unsigned): build/PitchHarbor-1.0-CoachingConsistency.xcarchive
+Local release preflight: 19 checks passed; Release/preflight-results.txt.
+
+build/CoachingConsistencyPhone.xcresult:
+89 logic tests in 11 suites passed.
+4 UI flows passed: Any Position and custom names, board delete cancel/confirm,
+direct live field substitution and Undo, return-to-match from all tabs.
+
+build/CoachingConsistencyDuo.xcresult:
+Both direct live field substitution and return-to-match from all tabs passed.
+Temporary simulator 729687D1-D4F0-4A49-97D2-6EFD1548ADF7 was shut down and deleted.
+The user's existing Duo simulator was not modified.
+
+build/CoachingConsistencyFinal.xcresult:
+Match history delete cancel/confirm passed.
+Return-to-match including the same-tab history overview passed.
+Smart swap and Undo passed, but its later player-edit navigation failed because
+its scroll helper searched downward for a player above the viewport while
+inheriting landscape orientation. Test orientation/direction were corrected.
+
+build/CoachingSmartSwapFinal.xcresult:
+Complete Smart Subs immediate swap, Undo, player position, and readiness flow passed.
+
+No physical-device installation or verification, distribution signing, upload,
+or App Store submission was performed. Existing marketing images were not
+regenerated; capture tests now target the inline Smart Subs card.

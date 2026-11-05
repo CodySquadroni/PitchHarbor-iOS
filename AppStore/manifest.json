@@ -1,0 +1,66 @@
+[
+  {
+    "file": "duo-inner/01-match-day.png",
+    "width": 2853,
+    "height": 2007,
+    "alpha": false,
+    "source": "captures/01-match-day.png",
+    "headline": "Your Team. Every Moment."
+  },
+  {
+    "file": "duo-inner/02-smart-subs.png",
+    "width": 2853,
+    "height": 2007,
+    "alpha": false,
+    "source": "captures/02-smart-subs.png",
+    "headline": "Make Every Rotation Count."
+  },
+  {
+    "file": "duo-inner/03-full-pitch.png",
+    "width": 2853,
+    "height": 2007,
+    "alpha": false,
+    "source": "captures/03-full-pitch.png",
+    "headline": "The Whole Pitch. In View."
+  },
+  {
+    "file": "duo-inner/04-practice-board.png",
+    "width": 2853,
+    "height": 2007,
+    "alpha": false,
+    "source": "captures/04-practice-board.png",
+    "headline": "Show the Play. Make It Click."
+  },
+  {
+    "file": "duo-inner/05-player-positions.png",
+    "width": 2853,
+    "height": 2007,
+    "alpha": false,
+    "source": "captures/05-player-positions.png",
+    "headline": "One Player. More Possibilities."
+  },
+  {
+    "file": "duo-inner/06-playbook.png",
+    "width": 2853,
+    "height": 2007,
+    "alpha": false,
+    "source": "captures/06-playbook.png",
+    "headline": "Your Plays. Ready to Go."
+  },
+  {
+    "file": "duo-inner/07-get-started.png",
+    "width": 2853,
+    "height": 2007,
+    "alpha": false,
+    "source": "captures/07-get-started.png",
+    "headline": "Your Team Starts Here."
+  },
+  {
+    "file": "duo-inner/08-duo-layout.png",
+    "width": 2853,
+    "height": 2007,
+    "alpha": false,
+    "source": "captures/08-duo-layout.png",
+    "headline": "Room for the Way You Coach."
+  }
+]

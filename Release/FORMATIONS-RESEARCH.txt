@@ -1,0 +1,50 @@
+PITCHHARBOR FORMATION CHOICES
+Reviewed October 23, 2026
+
+The app offers a curated set of coaching shapes for each supported team size.
+Formation numbers run from defense to attack and omit the goalkeeper.
+3v3 and 4v4 presets have no goalkeeper; 5v5 through 11v11 include one.
+These presets do not determine age eligibility or competition rules.
+
+3v3: 1-2, 2-1
+4v4: 2-2, 1-2-1, 1-3
+5v5: 2-2, 1-2-1, 2-1-1, 1-1-2
+6v6: 2-2-1, 2-1-2, 1-3-1
+7v7: 2-3-1, 3-2-1, 2-2-2, 3-1-2
+8v8: 3-3-1, 2-3-2, 3-2-2
+9v9: 3-3-2, 3-2-3, 2-3-3, 3-4-1, 4-3-1
+10v10: 3-3-3, 4-3-2, 3-4-2
+11v11: 4-3-3, 4-4-2, 4-2-3-1, 4-1-4-1, 3-5-2, 3-4-3, 5-3-2
+
+Research basis:
+- FIFA Training Centre describes 4-4-2 defensive organization and 4-2-3-1 attacking organization. It also uses 4-3-3 against 5-3-2 in session examples.
+  https://www.fifatrainingcentre.com/en/game/game-analysis/landing-page-core-principles.php
+  https://www.fifatrainingcentre.com/en/practice/elite-sessions/in-possession/wing-play.php
+  https://www.fifatrainingcentre.com/media/native/test/FIFA_Session_Plan_Lehmann2_FRA.pdf
+- Soccer Coach Weekly's formation library covers the listed 5v5 shapes, 7v7 shapes, and 9v9 examples including 3-2-3, 3-3-2, and 3-4-1.
+  https://www.soccercoachweekly.net/formats?Topics=5v5
+  https://www.soccercoachweekly.net/formats/7-aside-formation-2-3-1
+  https://www.soccercoachweekly.net/formats?Topics=9v9
+- Big Country Soccer Association's 6v6 guide discusses 2-2-1 and 2-1-2, with goalkeeper excluded from the formation numbers.
+  https://cloud.rampinteractive.com/bigcountrysoccer/files/6%20vs%206%20Formation%20Option%20Guide_signed.pdf
+- SoccerHelp describes youth formations across 6v6, 7v7, 8v8, 9v9, and 11v11; its 8v8 discussion includes 3-2-2 and 3-3-1.
+  https://www.soccerhelp.com/soccer-formations.shtml
+- U.S. Soccer's school starter kit explicitly uses 4v4 without goalkeepers.
+  https://www.ussoccer.com/soccer-forward/resource-hub/soccer-at-schools-starter-kit
+
+The less-standard 10v10 choices and supplemental small-sided variations are practical adaptations; the app does not claim a universal popularity ranking or governing-body endorsement. Only the formation concepts inform the implementation; source text and illustrations are not bundled.
+
+Implementation:
+The team stores a default; match setup may override it. New matches store their own formation, so later team edits do not rewrite match history. New practice boards use the team's selected shape. Slot roles and field coordinates use the same catalogue; Smart Subs uses the match's formation unless a coach overrides a player's current role in Rotation Plan. Current presets use LM/RM for wide midfield rows and LW/RW for forward wings. Auto Pick matches approved player roles against the selected slots; it never assumes winger eligibility also means midfield eligibility.
+
+Older version-1 saves with no formation field retain their historical match role and coordinate rules. Unknown or size-incompatible formation IDs in imported data are rejected by archive validation. Existing board objects remain untouched.
+
+Midfield role update — October 23, 2026
+4–3–3 now offers five explicit midfield setups: Balanced (CM/CM/CM), Wide (LM/CM/RM), Holding (CM/DM/CM), Attacking (CM/AM/CM), and Two Attacking Mids (AM/DM/AM). The wide variant is a selectable coaching preference, not a claim that every conventional 4–3–3 uses touchline midfielders. DM markers sit deeper, AM markers further forward, and the front three remain LW/ST/RW. The catalogue now contains 38 selectable presets/variants.
+
+FIFA's Boumehdi session describes a front three with two attacking midfielders and one defensive midfielder, supporting that specific midfield arrangement:
+https://www.fifatrainingcentre.com/media/native/test/FIFA_Session_Plan_Boumehdi.pdf
+FIFA's wing-play session distinguishes wide midfielders and a central attacking midfielder in a 4–2–3–1:
+https://www.fifatrainingcentre.com/en/practice/elite-sessions/in-possession/wing-play.php
+
+New wide-midfield presets receive new internal IDs. Original IDs remain readable with their original roles and coordinates; saved match history is not silently relabeled. Existing formations with older wide-role definitions appear as Previous Roles when selected in setup. Team defaults, match setup, and the pre-kickoff lineup editor share the 4–3–3 Midfield Setup selector. Live role overrides remain available in Rotation Plan.

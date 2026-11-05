@@ -1,0 +1,81 @@
+PITCHHARBOR — APP STORE SUBMISSION GUIDE
+Updated October 23, 2026 • Version 1.0 (Build 1)
+
+Read RELEASE-REPORT.txt for the actual test results and remaining blockers. No build has been uploaded or submitted. Apple makes the approval decision; neither local tests nor this checklist guarantees approval.
+
+1. FINISH YOUR PUBLIC CONTACT DETAILS
+
+Release/owner.json now contains Cody Squadroni and codysquadroni@gmail.com. Launch pricing is confirmed Free in AppStore/submission-metadata.json. The live public HTTPS privacy/support URLs are now configured and were verified without login. Do not enter an Apple ID password or private credentials. Run from the project folder:
+
+  python3 Release/configure.py
+
+The pages are already prepared locally. Running with --prepare permits missing URLs for local preparation; the normal command requires real URLs before release configuration. This creates Release/public/privacy.html and support.html and updates the app's bundled ReleaseContact.plist. Review both pages, including support-data practices, keep the hosted copies synchronized when changing their content. The published pages use Netlify; the privacy page distinguishes hosting requests from app-local coaching data. Check both pages on a phone without logging in. Rebuild afterward so the same links appear in the app. The offline policy is in Data & Settings → Privacy Policy, including during initial setup.
+
+A public privacy URL and an in-app policy link are required even for an offline app. The app's current privacy model is local processing, no tracking, no analytics, and deliberate user exports. See Apple's privacy guidance:
+https://developer.apple.com/app-store/app-privacy-details/
+https://developer.apple.com/app-store/review/guidelines/#privacy
+
+2. CONFIRM OWNERSHIP, NAME, AND SIGNING
+
+Enroll in the Apple Developer Program if necessary. In Xcode → Settings → Accounts, sign in with your developer account. Open PitchHarbor.xcodeproj, select the PitchHarbor app target, and inspect Signing & Capabilities. Keep automatic signing and choose your paid individual Apple Developer Program account in the Team selector. Apple uses “Team” for signing even for an individual developer; no company or employees are required. The project currently contains team W6K974HX85; confirm that it belongs to you.
+
+The display name is PitchHarbor; the project and scheme are PitchHarbor. Bundle ID is com.app.PitchRelay. Confirm you own/register it. If unavailable and this app has never shipped, choose a unique reverse-domain bundle ID you control, update the test host settings if needed, and create the matching App Store record. Do not change a shipped app's identifier casually. Verify the name is available in App Store Connect and that you have rights to the brand/icon. A previous web search was not trademark clearance.
+
+3. VERIFY THE REAL RELEASE ON DEVICES
+
+Use a signed Release build and then the uploaded TestFlight build. Test on a real ordinary iPhone, the smallest supported iPhone available to you, and Duo, including the outer screen and flat, book, and tabletop poses. Check the actual hinge, safe areas, one-handed reach, rotation, system gestures, and text/keyboard clipping. Test at large Accessibility Text sizes, VoiceOver, Dark Mode, Increase Contrast, Reduce Transparency, and Reduce Motion. Do not advertise accessibility support you have not fully verified.
+
+Run a complete match: attendance → starters → start → goals → Smart Subs → confirm → undo → pause → first half → second half → full time → history/report. Check alternate positions, a short bench, rested players, goalkeeper opt-in, and players unavailable for suggestions. Confirm rules yourself: this release supports coach-configured two-half matches and roll-on/roll-off substitutions; it does not enforce every league's substitution rules.
+
+Lock/unlock the device, background the app, kill and relaunch during timing, review clock recovery, and compare minutes. Test airplane mode. Draw, move objects, undo/redo, show/hide tools, switch fold poses, save, reopen, and export a board. Verify supported input hardware; do not promise Apple Pencil support on devices where it is unavailable.
+
+Export a backup, restore it into a disposable installation, check names/roles/times/ink, and verify the restore confirmation. Try a bad backup, cancel deletion, and erase all local data. Check an upgrade preserves existing records and a fresh install contains no fictional data. Do not erase your only real coaching records for testing.
+
+4. ARCHIVE AND UPLOAD
+
+Use the installed Xcode 27.1 and iOS 27.1 SDK (iOS 18 minimum deployment). Current Apple requirements are listed at:
+https://developer.apple.com/news/upcoming-requirements/
+
+Select scheme PitchHarbor and a generic iOS device destination, then Product → Archive. The Archive action uses Release. Increment Build for every subsequent upload; keep marketing version 1.0 for the initial release.
+
+In Window → Organizer → Archives, select the new signed archive. Review its privacy report, then Validate App. Resolve errors. Use Distribute App → App Store Connect → Upload and follow Xcode's signing prompts. Keep symbols enabled for useful crash reports. Wait for processing and address all App Store Connect notices. The unsigned audit archive in build/ is for inspection only and cannot be submitted.
+
+Optional local check before upload:
+  python3 Release/preflight.py --app '/absolute/path/Your.xcarchive/Products/Applications/PitchHarbor.app' --require-signing
+
+This check does not contact Apple or validate your URLs, legal declarations, or hardware behavior.
+
+5. CREATE AND COMPLETE THE APP STORE CONNECT RECORD
+
+Open https://appstoreconnect.apple.com → Apps → + → New App. Choose iOS, PitchHarbor (if available), English (U.S.), the exact registered Bundle ID, and a unique private SKU such as pitchharbor-ios. Review your developer name before the first release.
+
+Use AppStore/SUBMISSION-FIELDS.txt for the completed entry sheet and remaining owner fields. AppStore/store-copy.txt contains the final draft copy, and submission-metadata.json contains matching structured values. Use AppStore/AGE-RATING-DRAFT.txt when completing the current questionnaire. Choose Sports as the primary category. Add relevant keywords without competitors or trademarks; suggested starting list:
+  soccer,coach,lineup,substitutions,tactics,whiteboard,match,roster,football,training
+Enter your copyright holder, working Support URL, and optional Marketing URL. Supply the published Privacy Policy URL.
+
+Upload AppStore/iphone-medium PNGs into the ordinary iPhone/Dynamic Island medium slot and AppStore/duo-inner PNGs into the Duo inner-display slot. Use the recommended 01–08 order for Duo. These are actual app screens with disposable demonstration data; no roster is seeded in the released app. Do not upload source captures or the contact sheet. The build targets iPhone, so it does not require an iPad listing. Recheck the exact slots offered by App Store Connect:
+https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications
+
+Complete the CURRENT age-rating questionnaire honestly. The app is a coaching utility for adults, not a Kids Category app, social network, medical product, or gambling app. Do not force a rating or claim to have answered legal questions in this guide. Select the resulting rating and review country-specific requirements.
+
+App Privacy: for this implementation, “Data Not Collected” is appropriate if the final build and your actual practices remain as reviewed. Apple distinguishes on-device processing from developer collection. Reassess if you add analytics, crash-report SDKs, accounts, remote AI, support uploads, or other services. User-directed exports may contain player information; the policy describes that sharing.
+
+Encryption: the build declares ITSAppUsesNonExemptEncryption = NO because it uses Apple system protection, with no custom encryption or third-party crypto. Confirm the current exemption answers match your distribution and any later changes:
+https://developer.apple.com/documentation/security/complying-with-encryption-export-regulations
+
+Set the price to Free, as Cody confirmed. The app has no purchases or subscriptions. Choose countries, tax category, and availability. Complete applicable agreements, tax/banking information, and EU trader-status verification yourself. Keep Mac/Apple Vision availability off until those environments are tested; iPhone-on-Mac availability can be a separate App Store Connect setting.
+
+Accessibility labels are promises about the entire app. Do not select full VoiceOver/Larger Text support based only on the limited automated audit; manually verify Apple's criteria first.
+
+6. TESTFLIGHT AND REVIEW INFORMATION
+
+Add the processed build to TestFlight. Have coaches test it on supported devices, collect feedback, resolve crashes or blocked workflows, and upload an incremented build if needed. External TestFlight distribution may require beta review.
+
+In version 1.0, choose the final tested build. Under App Review Information, enter your real contact name, email, and phone number. Sign-in is not required, so no demo credentials are needed. Paste Release/REVIEW-NOTES.txt, updating any facts that changed. Reviewers should create their own team through the same onboarding available to every coach; no hidden review-only feature is needed.
+
+Select manual release if you want to control launch timing after approval. Choose Add for Review, inspect the draft submission, and then Submit for Review. “Add for Review” alone does not send it. See Apple's current instructions:
+https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/submit-an-app
+
+7. AFTER SUBMISSION
+
+Monitor App Store Connect and the review contact mailbox. If Apple requests changes, reproduce the concern, fix it, increase the build number, test again, upload, select the new build, and respond clearly with the actual changes. Do not promise missing functionality. Once approved, release manually if that was your chosen setting, verify the live page and download, and monitor crashes/support.

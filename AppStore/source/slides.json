@@ -1,0 +1,58 @@
+[
+  {
+    "id": "01-match-day",
+    "feature": "Match Day",
+    "headline": "Your Team. <em>Every Moment.</em>",
+    "description": "Clock, score, lineup, and substitutions. Together on iPhone Duo.",
+    "theme": "forest"
+  },
+  {
+    "id": "02-smart-subs",
+    "feature": "Smart Subs",
+    "headline": "Make Every <em>Rotation Count.</em>",
+    "description": "Position-aware suggestions, playing time, and bench rest. You make the call.",
+    "theme": "paper"
+  },
+  {
+    "id": "03-full-pitch",
+    "feature": "Full-Screen Field",
+    "headline": "The Whole Pitch. <em>In View.</em>",
+    "description": "Score, manage substitutions, and end the half without leaving the field.",
+    "theme": "mint"
+  },
+  {
+    "id": "04-practice-board",
+    "feature": "Practice Whiteboard",
+    "headline": "Show the Play. <em>Make It Click.</em>",
+    "description": "Draw passing routes. Move players. Bring your next idea to the team.",
+    "theme": "forest"
+  },
+  {
+    "id": "05-player-positions",
+    "feature": "Players & Positions",
+    "headline": "One Player. <em>More Possibilities.</em>",
+    "description": "Choose preferred and alternate positions for more useful Smart Subs.",
+    "theme": "paper"
+  },
+  {
+    "id": "06-playbook",
+    "feature": "Your Playbook",
+    "headline": "Your Plays. <em>Ready to Go.</em>",
+    "description": "Save your boards and bring them back for practice or halftime.",
+    "theme": "mint"
+  },
+  {
+    "id": "07-get-started",
+    "feature": "Simple Setup",
+    "headline": "Your Team <em>Starts Here.</em>",
+    "description": "Set match defaults, add your players, and get ready to coach. Works offline.",
+    "theme": "forest"
+  },
+  {
+    "id": "08-duo-layout",
+    "feature": "Adaptive Duo Layout",
+    "headline": "Room for the Way <em>You Coach.</em>",
+    "description": "Keep the field and match controls in separate panes when Duo is partially open.",
+    "theme": "paper"
+  }
+]

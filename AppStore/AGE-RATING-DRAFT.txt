@@ -1,0 +1,31 @@
+PITCHHARBOR — AGE RATING ANSWER DRAFT
+Prepared October 23, 2026 for the present implementation. Not submitted to Apple.
+
+Parental Controls: No — no parental-control system.
+Age Assurance: No — no identity/age verification.
+Unrestricted Web Access: No — no general-purpose in-app browser; privacy/support links open system handlers.
+User-Generated Content: No under Apple's broad-distribution definition — coaches edit private local boards and rosters; the app has no public posting, feed, or content-discovery service. System exports alone do not create a public platform inside PitchHarbor.
+Social Media: No.
+Messaging and Chat: No — no in-app user-to-user communication. Email support launches the user's external email handler.
+Advertising: No.
+Profanity or Crude Humor: None in developer-supplied content.
+Horror or Fear Themes: None.
+Alcohol, Tobacco, or Drug Use or References: None.
+Mature or Suggestive Themes: None.
+Sexual Content or Nudity: None.
+Graphic Sexual Content or Nudity: None.
+Cartoon or Fantasy Violence: None.
+Realistic Violence: None.
+Prolonged Graphic or Sadistic Realistic Violence: None.
+Guns or Other Weapons: None.
+Medical or Treatment Information: None — no diagnosis, treatment, injury assessment, or medical advice.
+Health or Wellness Topics: Draft No — the current app tracks matches and coach-entered rotation targets rather than prescribing exercise, lifestyle, nutrition, or recovery. Review this field against the final Smart Subs wording; if health or exercise recommendations are introduced, change the answer.
+Gambling: No.
+Simulated Gambling: None.
+Contests: None — recording an external soccer match is not an in-app contest with prizes or entry mechanics.
+Loot Boxes: No.
+Purchases: None.
+Kids Category: No.
+
+Let App Store Connect calculate the final age rating and any regional classifications. Review any additional or changed questions shown in the current form; this draft is based on Apple's published definitions, not a completed live questionnaire.
+Source: https://developer.apple.com/help/app-store-connect/reference/app-information/age-ratings-values-and-definitions/
